@@ -177,7 +177,7 @@ class _AccountPageState extends State<AccountPage> {
                   onPressed: _updateUser,
                   child: Text('Update', style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF378CE7),
+                    backgroundColor: Color(0xFF378CE7),
                     minimumSize: Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   ),

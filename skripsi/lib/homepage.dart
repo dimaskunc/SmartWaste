@@ -44,8 +44,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Hello, ${userManager.username ?? 'User'}', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                  SizedBox(height: 16),
+                  Text('Hello, ${userManager.username ?? 'User'}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   Container(
                     height: 200,
                     child: ListView.builder(
@@ -56,14 +55,13 @@ class _HomePageState extends State<HomePage> {
                           padding: EdgeInsets.only(left: index == 0 ? 0 : 8.0, right: 8.0), 
                           child: Image.asset(
                             imgList[index],
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain, // Ganti menjadi contain agar gambar tidak terpotong
                             width: MediaQuery.of(context).size.width - 32, 
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -115,12 +113,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Center(
                       child: _selectedCategoryDescription != null
-                          ? Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Text(
-                                _selectedCategoryDescription!,
-                                style: TextStyle(fontSize: 16, color: Colors.white),
-                                textAlign: TextAlign.justify,
+                          ? SingleChildScrollView( // Tambahkan Scroll agar deskripsi panjang bisa tampil semua
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Text(
+                                  _selectedCategoryDescription!,
+                                  style: TextStyle(fontSize: 16, color: Colors.white),
+                                  textAlign: TextAlign.justify,
+                                ),
                               ),
                             )
                           : Text(
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
         backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? Colors.black // Warna background saat mode gelap
+          ? Colors.black 
           : Colors.white,
         selectedItemColor: Color(0xFF378CE7),
         unselectedItemColor: Color(0xFF67C6E3),
@@ -205,7 +205,7 @@ class CategoryButton extends StatelessWidget {
         style: TextStyle(color: Colors.white), 
       ),
       style: ElevatedButton.styleFrom(
-        primary: color, 
+        backgroundColor: color, 
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         minimumSize: Size(100, 50), 
