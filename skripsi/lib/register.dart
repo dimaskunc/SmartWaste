@@ -56,9 +56,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       primaryColor: Color(0xFF378CE7),
       scaffoldBackgroundColor: Color(0xFFD5E9F8),
       textTheme: TextTheme(
-        headline6: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        bodyText2: TextStyle(fontSize: 16),
-        subtitle1: TextStyle(color: Colors.white),
+        headlineMedium: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        bodyLarge: TextStyle(fontSize: 16),
+        titleMedium: TextStyle(color: Colors.white),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -71,7 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          primary: Color(0xFF378CE7),
+          backgroundColor: Color(0xFF378CE7),
           minimumSize: Size(double.infinity, 50),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         ),
@@ -90,10 +90,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Register', style: registerTheme.textTheme.headline6),
+                  Text('Register', style: registerTheme.textTheme.headlineMedium),
                   SizedBox(height: 5),
-                  Text('Create your new account', style: registerTheme.textTheme.bodyText2),
-                  SizedBox(height: 50),
+                  Text('Create your new account', style: registerTheme.textTheme.bodyLarge),
+                  SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -113,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                         return null;
                       },
-                      style: registerTheme.textTheme.subtitle1,
+                      style: registerTheme.textTheme.titleMedium,
                       decoration: InputDecoration(
                         hintText: 'Username',
                         prefixIcon: Icon(Icons.person, color: Colors.white),
@@ -141,7 +141,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                         return null;
                       },
-                      style: registerTheme.textTheme.subtitle1,
+                      style: registerTheme.textTheme.titleMedium,
                       decoration: InputDecoration(
                         hintText: 'Email',
                         prefixIcon: Icon(Icons.email, color: Colors.white),
@@ -169,14 +169,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                         return null;
                       },
-                      style: registerTheme.textTheme.subtitle1,
+                      style: registerTheme.textTheme.titleMedium,
                       decoration: InputDecoration(
                         hintText: 'Password',
                         prefixIcon: Icon(Icons.lock, color: Colors.white),
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 13),
                   Container(
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -197,7 +197,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Text('Register', style: TextStyle(color: Colors.white)),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

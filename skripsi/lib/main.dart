@@ -21,8 +21,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final String baseUrl = 'http://127.0.0.1:8000/api';
-  final ApiManager apiManager = ApiManager(baseUrl: 'http://127.0.0.1:8000/api');
+  final String baseUrl = 'http://192.168.0.111:8000/';
+  final ApiManager apiManager = ApiManager(baseUrl: 'http://192.168.0.111:8000/');
 
   bool isDarkMode = false;
 

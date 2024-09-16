@@ -1,0 +1,6 @@
+kaca
+karton
+kertas
+logam
+organik
+plastik

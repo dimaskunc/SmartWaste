@@ -118,7 +118,7 @@ class ApiManager {
 
   Future<void> updateUser(String name, String email, String password) async {
   final response = await http.put(
-    Uri.parse('$baseUrl/update_user'), // Ganti dengan URL endpoint yang sesuai
+    Uri.parse(baseUrl+'api/update_user'), // Ganti dengan URL endpoint yang sesuai
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Bearer ${await storage.read(key: 'kode_rahassia')}', // Ambil token autentikasi
@@ -137,7 +137,7 @@ class ApiManager {
 
   Future<String?> register(String name, String email, String password) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/register'),
+      Uri.parse(baseUrl+'api/register'),
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: {
         'name': name,
@@ -150,66 +150,19 @@ class ApiManager {
       final token = "Succesfully";
       return token;
     } else {
-      throw Exception('Failed to register, email sudah tersedia');
+      throw Exception('Failed to register, email sudah tersedia ${response.statusCode}');
 
     }
   }
-
-
-  Future<void> login2(String email, String password) async {
-    final response = await http.post(
-      Uri.parse('$baseUrl/login.php'),
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: {
-        'email': email,
-        'password': password,
-      },
-    );
-
-    
-      final jsonResponse = jsonDecode(response.body);
-      final token = jsonResponse['token'];
-
-      await storage.write(key: 'auth_token', value: token);
-
-      return token;
-    
-    
-  }
-
-  Future<String?> login(String name, String password) async {
-  try {
-    final response = await http.post(
-      Uri.parse('$baseUrl/login.php'),
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: {
-        'name': name,
-        'password': password,
-      },
-    );
-
-    if (response.statusCode == 200) {
-      final jsonResponse = jsonDecode(response.body);
-      final token = jsonResponse['token'];
-
-      await storage.write(key: 'auth_token', value: token);
-
-      return token;
-    } else {
-      throw Exception('Failed to login');
-    }
-  } catch (e) {
-    print('Error in login: $e');
-    throw e;
-  }
-}
 
 
   Future<dynamic?> authenticate(String name, String password) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/login'),
+      Uri.parse(baseUrl+'api/login'),
       body: {'name': name, 'password': password},
     );
+    
+    print(response.statusCode );
 
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);

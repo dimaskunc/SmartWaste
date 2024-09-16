@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       try {
         final response = await apiManager.authenticate(name, password);
         final token = response['token'];
-        final role = response['role'];
+        final role = 'User';
         userManager.setAuthToken(token);
         userManager.setUsername(name);
 
@@ -61,9 +61,9 @@ class _LoginScreenState extends State<LoginScreen> {
       primaryColor: Color(0xFF378CE7),
       scaffoldBackgroundColor: Color(0xFFD5E9F8),
       textTheme: TextTheme(
-        headline6: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        bodyText2: TextStyle(fontSize: 16),
-        subtitle1: TextStyle(color: Colors.white),
+        headlineMedium: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        bodyLarge: TextStyle(fontSize: 16),
+        titleMedium: TextStyle(color: Colors.white),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          primary: Color(0xFF378CE7),
+          backgroundColor: Color(0xFF378CE7),
           minimumSize: Size(double.infinity, 50),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         ),
@@ -95,9 +95,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Login', style: loginTheme.textTheme.headline6),
+                  Text('Login', style: loginTheme.textTheme.headlineMedium),
                   SizedBox(height: 5),
-                  Text('Login to your account', style: loginTheme.textTheme.bodyText2),
+                  Text('Login to your account', style: loginTheme.textTheme.bodyLarge),
                   SizedBox(height: 50),
                   Container(
                     decoration: BoxDecoration(
@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                         return null;
                       },
-                      style: loginTheme.textTheme.subtitle1,
+                      style: loginTheme.textTheme.titleMedium,
                       decoration: InputDecoration(
                         hintText: 'Username',
                         prefixIcon: Icon(Icons.person, color: Colors.white),
@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                         return null;
                       },
-                      style: loginTheme.textTheme.subtitle1,
+                      style: loginTheme.textTheme.titleMedium,
                       decoration: InputDecoration(
                         hintText: 'Password',
                         prefixIcon: Icon(Icons.lock, color: Colors.white),
